@@ -1,0 +1,1 @@
+const displayText = document.getElementById("display-text");
