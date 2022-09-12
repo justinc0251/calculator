@@ -1,4 +1,9 @@
 const displayText = document.getElementById("display-text");
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach((button) =>
+  button.addEventListener("click", () => console.log(button.textContent))
+);
 
 function add(a, b) {
   return a + b;
@@ -8,9 +13,8 @@ function subtract(a, b) {
   return a - b;
 }
 
-// Multiply "a" by 1.0
 function divide(a, b) {
-  return (a * 1.0) / b;
+  return a / b;
 }
 
 function multiply(a, b) {
@@ -22,4 +26,5 @@ function operate(operator, a, b) {
   return answer;
 }
 
-console.log(operate(divide, 1, 2));
+function updateDisplay() {
+}
