@@ -1,9 +1,19 @@
 const displayText = document.getElementById("display-text");
-const buttons = document.querySelectorAll(".btn");
 
-buttons.forEach((button) =>
+const numbers = document.querySelectorAll(".number");
+
+numbers.forEach((button) =>
   button.addEventListener("click", () => updateDisplay(button.textContent))
 );
+
+const clearButton = document.getElementById("clear");
+
+clearButton.addEventListener("click", () => {
+  displayText.textContent = "0";
+  currentOperator = "";
+  firstNumber = "";
+  secondNumber = "";
+});
 
 function add(a, b) {
   return a + b;
@@ -27,8 +37,9 @@ function operate(operator, a, b) {
 }
 
 function updateDisplay(input) {
-  if ((displayText.textContent == "0")) {
+  if (displayText.textContent == "0") {
     displayText.textContent = "";
   }
   displayText.textContent += input;
 }
+
