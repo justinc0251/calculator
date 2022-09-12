@@ -44,14 +44,15 @@ body {
   margin: 10px 10px;
 }
 
-#clear-button {
-  padding: 10px 30px;
-}
-
 #buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+#equal-button {
+  background-color: rgb(231, 231, 231);
+  grid-column: span 2;
 }
 
 .btn {
