@@ -50,7 +50,7 @@ body {
   gap: 20px;
 }
 
-#equal-button {
+#equal {
   background-color: rgb(231, 231, 231);
   grid-column: span 2;
 }
@@ -65,4 +65,8 @@ body {
 
 .operator {
   background-color: rgb(231, 231, 231);
+}
+
+.operator:focus {
+  background-color: rgb(138, 138, 138);
 }
