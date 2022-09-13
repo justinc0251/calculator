@@ -1,10 +1,24 @@
+let currentOperator = "";
+let firstNumber = "";
+let secondNumber = "";
+let isOperator = false;
 const displayText = document.getElementById("display-text");
 
 const numbers = document.querySelectorAll(".number");
 
-numbers.forEach((button) =>
-  button.addEventListener("click", () => updateDisplay(button.textContent))
-);
+numbers.forEach((button) => {
+  button.addEventListener("click", () => {
+  });
+});
+
+const operators = document.querySelectorAll(".operator");
+
+operators.forEach((operator) => {
+  operator.addEventListener("click", () => {
+
+    }
+  });
+});
 
 const clearButton = document.getElementById("clear");
 
@@ -15,31 +29,18 @@ clearButton.addEventListener("click", () => {
   secondNumber = "";
 });
 
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function divide(a, b) {
-  return a / b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
 function operate(operator, a, b) {
-  let answer = operator(a, b);
-  return answer;
-}
-
-function updateDisplay(input) {
-  if (displayText.textContent == "0") {
-    displayText.textContent = "";
+  if (operator == "add") {
+    return a + b;
   }
-  displayText.textContent += input;
+  if (operator == "subtract") {
+    return a - b;
+  }
+  if (operator == "divide") {
+    return a / b;
+  }
+  if (operator == "multiply") {
+    return a * b;
+  }
 }
 
