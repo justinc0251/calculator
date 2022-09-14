@@ -2,12 +2,16 @@ let currentOperator = "";
 let firstNumber = "";
 let secondNumber = "";
 let isOperator = false;
+let isAnswer = false;
 const displayText = document.getElementById("display-text");
 
 const numbers = document.querySelectorAll(".number");
 
 numbers.forEach((button) => {
   button.addEventListener("click", () => {
+    if (isAnswer == true) {
+      clear();
+    }
     updateDisplay(button.textContent);
   });
 });
@@ -34,6 +38,7 @@ equalButton.addEventListener("click", () => {
     Number(secondNumber)
   );
   displayText.textContent = answer;
+  isAnswer = true;
 });
 
 const clearButton = document.getElementById("clear");
