@@ -16,7 +16,10 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-
+    currentOperator = operator.textContent;
+    if (firstNumber == "") {
+      firstNumber = displayText.textContent;
+      isOperator = true;
     }
   });
 });
