@@ -9,9 +9,6 @@ const numbers = document.querySelectorAll(".number");
 
 numbers.forEach((button) => {
   button.addEventListener("click", () => {
-    if (isAnswer == true) {
-      clear();
-    }
     updateDisplay(button.textContent);
   });
 });
@@ -63,6 +60,7 @@ function operate(operator, a, b) {
 }
 
 function updateDisplay(input) {
+  newNumber();
   if (isOperator == true) {
     displayText.textContent = "";
     isOperator = false;
@@ -79,4 +77,11 @@ function clear() {
   currentOperator = "";
   firstNumber = "";
   secondNumber = "";
+}
+
+function newNumber() {
+  if (isAnswer == true) {
+    clear();
+    isAnswer = false;
+  }
 }
