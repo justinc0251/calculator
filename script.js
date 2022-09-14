@@ -39,6 +39,10 @@ equalButton.addEventListener("click", () => {
   if (isAnswer) {
     return;
   }
+  if (currentOperator == "") {
+    return;
+  }
+
   secondNumber = displayText.textContent;
 
   answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
@@ -55,8 +59,8 @@ clearButton.addEventListener("click", () => {
 const oppositeSignButton = document.getElementById("opposite-sign");
 
 oppositeSignButton.addEventListener("click", () => {
-    displayText.textContent *= -1;
-})
+  displayText.textContent *= -1;
+});
 
 function operate(operator, a, b) {
   if (operator == "+") {
