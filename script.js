@@ -18,11 +18,18 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    currentOperator = operator.textContent;
-    if (firstNumber == "") {
-      firstNumber = displayText.textContent;
-      isOperator = true;
+    if (currentOperator != "" && !isAnswer) {
+      secondNumber = displayText.textContent;
+      displayText.textContent = operate(
+        currentOperator,
+        Number(firstNumber),
+        Number(secondNumber)
+      );
     }
+    currentOperator = operator.textContent;
+    isAnswer = false;
+    isOperator = true;
+    firstNumber = displayText.textContent;
   });
 });
 
