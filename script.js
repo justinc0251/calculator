@@ -78,7 +78,12 @@ function operate(operator, a, b) {
 }
 
 function updateDisplay(input) {
-  newNumber();
+  // If new number is inputted after answer, display is cleared.
+  if (isAnswer == true) {
+    clear();
+    isAnswer = false;
+  }
+
   if (isOperator == true && firstNumber != "") {
     displayText.textContent = "";
     isOperator = false;
@@ -96,12 +101,4 @@ function clear() {
   firstNumber = "";
   secondNumber = "";
   answer = "";
-}
-
-// If new number is inputted after answer, display is cleared.
-function newNumber() {
-  if (isAnswer == true) {
-    clear();
-    isAnswer = false;
-  }
 }
