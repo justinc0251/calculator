@@ -39,10 +39,7 @@ equalButton.addEventListener("click", () => {
 const clearButton = document.getElementById("clear");
 
 clearButton.addEventListener("click", () => {
-  displayText.textContent = "0";
-  currentOperator = "";
-  firstNumber = "";
-  secondNumber = "";
+  clear();
 });
 
 function operate(operator, a, b) {
@@ -70,4 +67,11 @@ function updateDisplay(input) {
     }
   }
   displayText.textContent += input;
+}
+
+function clear() {
+  displayText.textContent = "0";
+  currentOperator = "";
+  firstNumber = "";
+  secondNumber = "";
 }
