@@ -24,6 +24,18 @@ operators.forEach((operator) => {
   });
 });
 
+const equalButton = document.getElementById("equal");
+
+equalButton.addEventListener("click", () => {
+  secondNumber = displayText.textContent;
+  let answer = operate(
+    currentOperator,
+    Number(firstNumber),
+    Number(secondNumber)
+  );
+  displayText.textContent = answer;
+});
+
 const clearButton = document.getElementById("clear");
 
 clearButton.addEventListener("click", () => {
