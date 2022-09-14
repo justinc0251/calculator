@@ -69,7 +69,7 @@ function operate(operator, a, b) {
 
 function updateDisplay(input) {
   newNumber();
-  if (isOperator == true) {
+  if (isOperator == true && firstNumber != "") {
     displayText.textContent = "";
     isOperator = false;
   } else {
