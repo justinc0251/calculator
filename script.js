@@ -1,6 +1,7 @@
 let currentOperator = "";
 let firstNumber = "";
 let secondNumber = "";
+let answer = "";
 let isOperator = false;
 let isAnswer = false;
 const displayText = document.getElementById("display-text");
@@ -28,12 +29,12 @@ operators.forEach((operator) => {
 const equalButton = document.getElementById("equal");
 
 equalButton.addEventListener("click", () => {
+  if (isAnswer) {
+    return;
+  }
   secondNumber = displayText.textContent;
-  let answer = operate(
-    currentOperator,
-    Number(firstNumber),
-    Number(secondNumber)
-  );
+
+  answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
   displayText.textContent = answer;
   isAnswer = true;
 });
@@ -77,8 +78,10 @@ function clear() {
   currentOperator = "";
   firstNumber = "";
   secondNumber = "";
+  answer = "";
 }
 
+// If new number is inputted after answer, display is cleared.
 function newNumber() {
   if (isAnswer == true) {
     clear();
