@@ -52,6 +52,12 @@ clearButton.addEventListener("click", () => {
   clear();
 });
 
+const oppositeSignButton = document.getElementById("opposite-sign");
+
+oppositeSignButton.addEventListener("click", () => {
+    displayText.textContent *= -1;
+})
+
 function operate(operator, a, b) {
   if (operator == "+") {
     return a + b;
