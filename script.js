@@ -8,6 +8,7 @@ const numbers = document.querySelectorAll(".number");
 
 numbers.forEach((button) => {
   button.addEventListener("click", () => {
+    updateDisplay(button.textContent);
   });
 });
 
@@ -30,17 +31,28 @@ clearButton.addEventListener("click", () => {
 });
 
 function operate(operator, a, b) {
-  if (operator == "add") {
+  if (operator == "+") {
     return a + b;
   }
-  if (operator == "subtract") {
+  if (operator == "-") {
     return a - b;
   }
-  if (operator == "divide") {
+  if (operator == "÷") {
     return a / b;
   }
-  if (operator == "multiply") {
+  if (operator == "x") {
     return a * b;
   }
 }
 
+function updateDisplay(input) {
+  if (isOperator == true) {
+    displayText.textContent = "";
+    isOperator = false;
+  } else {
+    if (displayText.textContent == "0") {
+      displayText.textContent = "";
+    }
+  }
+  displayText.textContent += input;
+}
