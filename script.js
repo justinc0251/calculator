@@ -35,26 +35,11 @@ operators.forEach((operator) => {
 
 const equalButton = document.getElementById("equal");
 
-equalButton.addEventListener("click", () => {
-  if (isAnswer) {
-    return;
-  }
-  if (currentOperator == "") {
-    return;
-  }
-
-  secondNumber = displayText.textContent;
-
-  answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
-  displayText.textContent = answer;
-  isAnswer = true;
-});
+equalButton.addEventListener("click", evaluate);
 
 const clearButton = document.getElementById("clear");
 
-clearButton.addEventListener("click", () => {
-  clear();
-});
+clearButton.addEventListener("click", clear);
 
 const oppositeSignButton = document.getElementById("opposite-sign");
 
@@ -101,4 +86,19 @@ function clear() {
   firstNumber = "";
   secondNumber = "";
   answer = "";
+}
+
+function evaluate() {
+  if (isAnswer) {
+    return;
+  }
+  if (currentOperator == "") {
+    return;
+  }
+
+  secondNumber = displayText.textContent;
+
+  answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
+  displayText.textContent = answer;
+  isAnswer = true;
 }
