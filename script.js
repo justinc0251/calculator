@@ -4,6 +4,7 @@ let secondNumber = "";
 let answer = "";
 let isOperator = false;
 let isAnswer = false;
+let isSecondNumber = false;
 
 window.addEventListener("keydown", keyboardInput);
 
@@ -11,28 +12,21 @@ function keyboardInput(e) {
   if (e.key >= 0 && e.key <= 9) {
     updateDisplay(e.key);
   }
-
   if (e.key === "=" || e.key === "Enter") {
     evaluate();
   }
-
-  if(e.key === "/")
-  {
-    getOperator("÷")
+  if (e.key === "/") {
+    getOperator("÷");
   }
-  if(e.key === "+")
-  {
-    getOperator("+")
+  if (e.key === "+") {
+    getOperator("+");
   }
-  if(e.key === "-")
-  {
-    getOperator("-")
+  if (e.key === "-") {
+    getOperator("-");
   }
-  if(e.key === "*" || e.key === "x")
-  {
-    getOperator("x")
+  if (e.key === "*" || e.key === "x") {
+    getOperator("x");
   }
-
 }
 
 const displayText = document.getElementById("display-text");
@@ -89,6 +83,10 @@ function updateDisplay(input) {
     isAnswer = false;
   }
 
+  if (currentOperator != "" && firstNumber != "") {
+    isSecondNumber = true;
+  }
+
   if (isOperator == true && firstNumber != "") {
     displayText.textContent = "";
     isOperator = false;
@@ -124,16 +122,16 @@ function evaluate() {
 }
 
 function getOperator(operator) {
-      if (currentOperator != "" && !isAnswer) {
-      secondNumber = displayText.textContent;
-      displayText.textContent = operate(
-        currentOperator,
-        Number(firstNumber),
-        Number(secondNumber)
-      );
-    }
-    currentOperator = operator;
-    isAnswer = false;
-    isOperator = true;
-    firstNumber = displayText.textContent;
+  if (currentOperator != "" && !isAnswer && isSecondNumber) {
+    secondNumber = displayText.textContent;
+    displayText.textContent = operate(
+      currentOperator,
+      Number(firstNumber),
+      Number(secondNumber)
+    );
+  }
+  currentOperator = operator;
+  isAnswer = false;
+  isOperator = true;
+  firstNumber = displayText.textContent;
 }
