@@ -4,6 +4,37 @@ let secondNumber = "";
 let answer = "";
 let isOperator = false;
 let isAnswer = false;
+
+window.addEventListener("keydown", keyboardInput);
+
+function keyboardInput(e) {
+  if (e.key >= 0 && e.key <= 9) {
+    updateDisplay(e.key);
+  }
+
+  if (e.key === "=" || e.key === "Enter") {
+    evaluate();
+  }
+
+  if(e.key === "/")
+  {
+    getOperator("÷")
+  }
+  if(e.key === "+")
+  {
+    getOperator("+")
+  }
+  if(e.key === "-")
+  {
+    getOperator("-")
+  }
+  if(e.key === "*" || e.key === "x")
+  {
+    getOperator("x")
+  }
+
+}
+
 const displayText = document.getElementById("display-text");
 
 const numbers = document.querySelectorAll(".number");
@@ -18,18 +49,7 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    if (currentOperator != "" && !isAnswer) {
-      secondNumber = displayText.textContent;
-      displayText.textContent = operate(
-        currentOperator,
-        Number(firstNumber),
-        Number(secondNumber)
-      );
-    }
-    currentOperator = operator.textContent;
-    isAnswer = false;
-    isOperator = true;
-    firstNumber = displayText.textContent;
+    getOperator(operator.textContent);
   });
 });
 
@@ -101,4 +121,19 @@ function evaluate() {
   answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
   displayText.textContent = answer;
   isAnswer = true;
+}
+
+function getOperator(operator) {
+      if (currentOperator != "" && !isAnswer) {
+      secondNumber = displayText.textContent;
+      displayText.textContent = operate(
+        currentOperator,
+        Number(firstNumber),
+        Number(secondNumber)
+      );
+    }
+    currentOperator = operator;
+    isAnswer = false;
+    isOperator = true;
+    firstNumber = displayText.textContent;
 }
