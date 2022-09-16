@@ -6,6 +6,9 @@ let isOperator = false;
 let isAnswer = false;
 let isSecondNumber = false;
 
+const displayAnswer= document.getElementById("display-answer");
+const displayOperation = document.getElementById("display-operation");
+
 window.addEventListener("keydown", keyboardInput);
 
 function keyboardInput(e) {
@@ -31,8 +34,6 @@ function keyboardInput(e) {
     addDecimal();
   }
 }
-
-const displayText = document.getElementById("display-text");
 
 const numbers = document.querySelectorAll(".number");
 
@@ -61,7 +62,7 @@ clearButton.addEventListener("click", clear);
 const oppositeSignButton = document.getElementById("opposite-sign");
 
 oppositeSignButton.addEventListener("click", () => {
-  displayText.textContent *= -1;
+  displayAnswer.textContent *= -1;
 });
 
 const decimalButton = document.getElementById("decimal");
@@ -69,11 +70,11 @@ const decimalButton = document.getElementById("decimal");
 decimalButton.addEventListener("click", addDecimal);
 
 function addDecimal() {
-  if (displayText.textContent === "") displayText.textContent = "0";
-  if (displayText.textContent.includes(".")) {
+  if (displayAnswer.textContent === "") displayAnswer.textContent = "0";
+  if (displayAnswer.textContent.includes(".")) {
     return;
   }
-  displayText.textContent += ".";
+  displayAnswer.textContent += ".";
 }
 
 function add(a, b) {
@@ -120,18 +121,19 @@ function updateDisplay(input) {
   }
 
   if (isOperator == true && firstNumber != "") {
-    displayText.textContent = "";
+    displayAnswer.textContent = "";
     isOperator = false;
   } else {
-    if (displayText.textContent == "0") {
-      displayText.textContent = "";
+    if (displayAnswer.textContent == "0") {
+      displayAnswer.textContent = "";
     }
   }
-  displayText.textContent += input;
+  displayAnswer.textContent += input;
 }
 
 function clear() {
-  displayText.textContent = "0";
+  displayAnswer.textContent = "0";
+  displayOperation.textContent = "";
   currentOperator = "";
   firstNumber = "";
   secondNumber = "";
@@ -146,19 +148,20 @@ function evaluate() {
     return;
   }
 
-  secondNumber = displayText.textContent;
+  secondNumber = displayAnswer.textContent;
 
   answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
-  displayText.textContent = answer;
+  displayAnswer.textContent = answer;
   isAnswer = true;
   isSecondNumber = false;
+  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} =`
   currentOperator = "";
 }
 
 function getOperator(operator) {
   if (currentOperator != "" && !isAnswer && isSecondNumber) {
-    secondNumber = displayText.textContent;
-    displayText.textContent = operate(
+    secondNumber = displayAnswer.textContent;
+    displayAnswer.textContent = operate(
       currentOperator,
       Number(firstNumber),
       Number(secondNumber)
@@ -167,5 +170,6 @@ function getOperator(operator) {
   currentOperator = operator;
   isAnswer = false;
   isOperator = true;
-  firstNumber = displayText.textContent;
+  firstNumber = displayAnswer.textContent;
+  displayOperation.textContent = `${firstNumber} ${currentOperator}`;
 }
