@@ -136,6 +136,7 @@ function evaluate() {
   answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
   displayText.textContent = answer;
   isAnswer = true;
+  currentOperator = "";
 }
 
 function getOperator(operator) {
