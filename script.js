@@ -27,6 +27,9 @@ function keyboardInput(e) {
   if (e.key === "*" || e.key === "x") {
     getOperator("x");
   }
+  if (e.key === ".") {
+    addDecimal();
+  }
 }
 
 const displayText = document.getElementById("display-text");
@@ -60,6 +63,18 @@ const oppositeSignButton = document.getElementById("opposite-sign");
 oppositeSignButton.addEventListener("click", () => {
   displayText.textContent *= -1;
 });
+
+const decimalButton = document.getElementById("decimal");
+
+decimalButton.addEventListener("click", addDecimal);
+
+function addDecimal() {
+  if (displayText.textContent === "") displayText.textContent = "0";
+  if (displayText.textContent.includes(".")) {
+    return;
+  }
+  displayText.textContent += ".";
+}
 
 function add(a, b) {
   return a + b;
