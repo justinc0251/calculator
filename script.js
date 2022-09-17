@@ -6,7 +6,7 @@ let isOperator = false;
 let isAnswer = false;
 let isSecondNumber = false;
 
-const displayAnswer= document.getElementById("display-answer");
+const displayAnswer = document.getElementById("display-answer");
 const displayOperation = document.getElementById("display-operation");
 
 window.addEventListener("keydown", keyboardInput);
@@ -138,6 +138,9 @@ function clear() {
   firstNumber = "";
   secondNumber = "";
   answer = "";
+  isOperator = false;
+  isAnswer = false;
+  isSecondNumber = false;
 }
 
 function evaluate() {
@@ -154,7 +157,7 @@ function evaluate() {
   displayAnswer.textContent = answer;
   isAnswer = true;
   isSecondNumber = false;
-  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} =`
+  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} =`;
   currentOperator = "";
 }
 
@@ -166,6 +169,8 @@ function getOperator(operator) {
       Number(firstNumber),
       Number(secondNumber)
     );
+    isSecondNumber = false;
+
   }
   currentOperator = operator;
   isAnswer = false;
