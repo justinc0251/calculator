@@ -33,7 +33,7 @@ function keyboardInput(e) {
   if (e.key === ".") {
     addDecimal();
   }
-  if (e.key === "Escape") {
+  if (e.key === "Escape" || e.key === "c") {
     clear();
   }
 }
@@ -144,6 +144,7 @@ function clear() {
   isOperator = false;
   isAnswer = false;
   isSecondNumber = false;
+  resetButtonColors();
 }
 
 function evaluate() {
@@ -164,6 +165,11 @@ function evaluate() {
   currentOperator = "";
 }
 
+const subtractButton = document.getElementById("subtract");
+const addButton = document.getElementById("add");
+const multiplyButton = document.getElementById("multiply");
+const divideButton = document.getElementById("divide");
+
 function getOperator(operator) {
   if (currentOperator != "" && !isAnswer && isSecondNumber) {
     secondNumber = displayAnswer.textContent;
@@ -174,9 +180,35 @@ function getOperator(operator) {
     );
     isSecondNumber = false;
   }
+  changeOperatorButtonColor(operator);
   currentOperator = operator;
   isAnswer = false;
   isOperator = true;
   firstNumber = displayAnswer.textContent;
   displayOperation.textContent = `${firstNumber} ${currentOperator}`;
+}
+
+function changeOperatorButtonColor(operator) {
+  if (operator == "x") {
+    resetButtonColors();
+    multiplyButton.style.backgroundColor = "lightgrey";
+  } else if (operator == "+") {
+    resetButtonColors();
+    addButton.style.backgroundColor = "lightgrey";
+  } else if (operator == "-") {
+    resetButtonColors();
+    subtractButton.style.backgroundColor = "lightgrey";
+  } else if (operator == "÷") {
+    resetButtonColors();
+    divideButton.style.backgroundColor = "lightgrey";
+  } else {
+    return;
+  }
+}
+
+function resetButtonColors() {
+  multiplyButton.style.backgroundColor = "rgb(231, 231, 231)";
+  addButton.style.backgroundColor = "rgb(231, 231, 231)";
+  subtractButton.style.backgroundColor = "rgb(231, 231, 231)";
+  divideButton.style.backgroundColor = "rgb(231, 231, 231)";
 }
