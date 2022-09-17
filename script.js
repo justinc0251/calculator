@@ -36,6 +36,9 @@ function keyboardInput(e) {
   if (e.key === "Escape" || e.key === "c") {
     clear();
   }
+  if (e.key === "Backspace") {
+    backspace();
+  }
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -78,6 +81,19 @@ function addDecimal() {
     return;
   }
   displayAnswer.textContent += ".";
+}
+
+function backspace() {
+  if (displayAnswer.textContent === "0") {
+    return;
+  }
+  if (displayAnswer.textContent.length === 1) {
+    displayAnswer.textContent = "0";
+  } else {
+    displayAnswer.textContent = displayAnswer.textContent
+      .toString()
+      .slice(0, -1);
+  }
 }
 
 function add(a, b) {
