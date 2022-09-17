@@ -33,6 +33,9 @@ function keyboardInput(e) {
   if (e.key === ".") {
     addDecimal();
   }
+  if (e.key === "Escape") {
+    clear();
+  }
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -170,7 +173,6 @@ function getOperator(operator) {
       Number(secondNumber)
     );
     isSecondNumber = false;
-
   }
   currentOperator = operator;
   isAnswer = false;
