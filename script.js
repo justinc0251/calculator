@@ -177,7 +177,7 @@ function evaluate() {
   displayAnswer.textContent = answer;
   isAnswer = true;
   isSecondNumber = false;
-  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} =`;
+  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} = ${answer}`;
   currentOperator = "";
 }
 
