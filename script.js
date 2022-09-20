@@ -180,7 +180,9 @@ function evaluate() {
 
   secondNumber = displayAnswer.textContent;
 
-  answer = operate(currentOperator, Number(firstNumber), Number(secondNumber));
+  answer = roundNumber(
+    operate(currentOperator, Number(firstNumber), Number(secondNumber))
+  );
   displayAnswer.textContent = answer;
   isAnswer = true;
   isSecondNumber = false;
@@ -196,11 +198,7 @@ const divideButton = document.getElementById("divide");
 function getOperator(operator) {
   if (currentOperator != "" && !isAnswer && isSecondNumber) {
     secondNumber = displayAnswer.textContent;
-    displayAnswer.textContent = operate(
-      currentOperator,
-      Number(firstNumber),
-      Number(secondNumber)
-    );
+    displayAnswer.textContent = roundNumber(operate(currentOperator, Number(firstNumber), Number(secondNumber)));
     isSecondNumber = false;
   }
   changeOperatorButtonColor(operator);
@@ -240,10 +238,13 @@ function calculatePercent() {
   if (firstNumber == "") {
     firstNumber = 1;
   }
-  displayOperation.textContent += ` ${displayAnswer.textContent}%`
+  displayOperation.textContent += ` ${displayAnswer.textContent}%`;
 
-  displayAnswer.textContent =
-    (Number(displayAnswer.textContent) / 100) * Number(firstNumber);
+  displayAnswer.textContent = (Number(displayAnswer.textContent) / 100) * Number(firstNumber);
 }
 
 // Rounding function
+
+function roundNumber(number) {
+  return Math.round(number * 10000) / 10000;
+}
