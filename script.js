@@ -39,6 +39,9 @@ function keyboardInput(e) {
   if (e.key === "Backspace") {
     backspace();
   }
+  if (e.key === "%") {
+    calculatePercent();
+  }
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -70,6 +73,10 @@ const oppositeSignButton = document.getElementById("opposite-sign");
 oppositeSignButton.addEventListener("click", () => {
   displayAnswer.textContent *= -1;
 });
+
+const percentButton = document.getElementById("percent");
+
+percentButton.addEventListener("click", calculatePercent);
 
 const decimalButton = document.getElementById("decimal");
 
@@ -228,3 +235,15 @@ function resetButtonColors() {
   subtractButton.style.backgroundColor = "rgb(231, 231, 231)";
   divideButton.style.backgroundColor = "rgb(231, 231, 231)";
 }
+
+function calculatePercent() {
+  if (firstNumber == "") {
+    firstNumber = 1;
+  }
+  displayOperation.textContent += ` ${displayAnswer.textContent}%`
+
+  displayAnswer.textContent =
+    (Number(displayAnswer.textContent) / 100) * Number(firstNumber);
+}
+
+// Rounding function
