@@ -36,28 +36,35 @@ body {
   margin: 25px 0;
   border: 2px solid black;
   border-radius: 4px;
-  height: 100px;
   width: 285px;
+  min-height: 100px;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+#display-operation,
+#display-answer {
+  margin-right: 5px;
 }
 
 #display-operation {
-  display: flex;
-  justify-content: end;
-  font-size: 15px;
-  margin: 10px 10px;
+  font-size: 20px;
+  min-height: 25px;
+  margin-top: 5px;
 }
 
 #display-answer {
-  display: flex;
-  justify-content: end;
-  font-size: 20px;
-  margin: 10px 10px;
+  font-size: 30px;
+  min-height: 50px;
+  margin-bottom: 5px;
 }
 
 #buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  margin-bottom: 20px;
 }
 
 .btn {

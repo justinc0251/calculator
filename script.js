@@ -142,6 +142,12 @@ function updateDisplay(input) {
     isAnswer = false;
   }
 
+  if (!isOperator) {
+    if (displayAnswer.textContent.length == 15) {
+      return;
+    }
+  }
+
   if (currentOperator != "" && firstNumber != "") {
     isSecondNumber = true;
   }
@@ -186,7 +192,7 @@ function evaluate() {
   displayAnswer.textContent = answer;
   isAnswer = true;
   isSecondNumber = false;
-  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} = ${answer}`;
+  displayOperation.textContent = `${firstNumber} ${currentOperator} ${secondNumber} =`;
   currentOperator = "";
 }
 
@@ -198,7 +204,9 @@ const divideButton = document.getElementById("divide");
 function getOperator(operator) {
   if (currentOperator != "" && !isAnswer && isSecondNumber) {
     secondNumber = displayAnswer.textContent;
-    displayAnswer.textContent = roundNumber(operate(currentOperator, Number(firstNumber), Number(secondNumber)));
+    displayAnswer.textContent = roundNumber(
+      operate(currentOperator, Number(firstNumber), Number(secondNumber))
+    );
     isSecondNumber = false;
   }
   changeOperatorButtonColor(operator);
@@ -240,7 +248,8 @@ function calculatePercent() {
   }
   displayOperation.textContent += ` ${displayAnswer.textContent}%`;
 
-  displayAnswer.textContent = (Number(displayAnswer.textContent) / 100) * Number(firstNumber);
+  displayAnswer.textContent =
+    (Number(displayAnswer.textContent) / 100) * Number(firstNumber);
 }
 
 // Rounding function
