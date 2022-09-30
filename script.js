@@ -236,16 +236,16 @@ function getOperator(operator) {
 function changeOperatorButtonColor(operator) {
   if (operator == "x") {
     resetButtonColors();
-    multiplyButton.style.backgroundColor = "lightgrey";
+    multiplyButton.style.backgroundColor = "rgb(100, 100, 100)";
   } else if (operator == "+") {
     resetButtonColors();
-    addButton.style.backgroundColor = "lightgrey";
+    addButton.style.backgroundColor = "rgb(100, 100, 100)";
   } else if (operator == "-") {
     resetButtonColors();
-    subtractButton.style.backgroundColor = "lightgrey";
+    subtractButton.style.backgroundColor = "rgb(100, 100, 100)";
   } else if (operator == "÷") {
     resetButtonColors();
-    divideButton.style.backgroundColor = "lightgrey";
+    divideButton.style.backgroundColor = "rgb(100, 100, 100)";
   } else {
     return;
   }
@@ -253,10 +253,10 @@ function changeOperatorButtonColor(operator) {
 
 // Resets operator button colors
 function resetButtonColors() {
-  multiplyButton.style.backgroundColor = "rgb(231, 231, 231)";
-  addButton.style.backgroundColor = "rgb(231, 231, 231)";
-  subtractButton.style.backgroundColor = "rgb(231, 231, 231)";
-  divideButton.style.backgroundColor = "rgb(231, 231, 231)";
+  multiplyButton.style.backgroundColor = "rgb(55, 55, 55)";
+  addButton.style.backgroundColor = "rgb(55, 55, 55)";
+  subtractButton.style.backgroundColor = "rgb(55, 55, 55)";
+  divideButton.style.backgroundColor = "rgb(55, 55, 55)";
 }
 
 // Percent function
