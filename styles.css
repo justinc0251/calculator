@@ -74,10 +74,6 @@ button {
   color: white;
 }
 
-.footer {
-  margin-bottom: 15px;
-}
-
 .operator,
 #equal {
   background-color: rgb(55, 55, 55);
@@ -89,4 +85,9 @@ button {
 
 .operator:focus {
   background-color: rgb(100, 100, 100);
+}
+
+.footer {
+  margin-top: 50px;
+  margin-bottom: 15px;
 }
